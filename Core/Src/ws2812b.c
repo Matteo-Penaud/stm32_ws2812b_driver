@@ -45,10 +45,7 @@ void ws2812b_createStrip( TIM_HandleTypeDef *htim, uint32_t timerChannel, uint32
 	cursor->stripSize = stripSize;
 
 	ws2812b_createLeds(stripId);
-
-	/* WTF ? */
-//	cursor->next = NULL;
-//	cursor->prev = NULL;
+	ws2812b_sendStrip(stripId);
 
 	stripId++;
 }
@@ -82,7 +79,7 @@ void ws2812b_createLeds( uint32_t stripId )
 		}
 
 		ledCursor->ledId = ledIndex;
-		ledCursor->rgbaColor.red = 0;
+		ledCursor->rgbaColor.red = 30;
 		ledCursor->rgbaColor.green = 0;
 		ledCursor->rgbaColor.blue = 0;
 		ledCursor->rgbaColor.alpha = 0;

@@ -11,8 +11,8 @@
 #include "stm32l4xx_hal.h"
 #include "malloc.h"
 
-#define WS2812B_MAX_PWM 26
-#define WS2812B_MIN_PWM 14
+#define WS2812B_MAX_PWM 25
+#define WS2812B_MIN_PWM 15
 
 typedef struct {
 	uint8_t red;

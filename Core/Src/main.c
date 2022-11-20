@@ -18,10 +18,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "ws2812b.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "ws2812b.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -79,7 +79,6 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-  ws2812b_createStrip(&htim2, TIM_CHANNEL_1, 10);
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -95,10 +94,7 @@ int main(void)
   MX_USART2_UART_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-
-  ws2812b_sendStrip(0);
-
-//  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  ws2812b_createStrip(&htim2, TIM_CHANNEL_1, 5);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -110,14 +106,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
-}
-
-
-/* Called once DMA writting done */
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
-{
-	HAL_TIM_PWM_Stop_DMA(&htim2, TIM_CHANNEL_1);
-	uc_dataSentFlag = 1;
 }
 
 /**
@@ -310,8 +298,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : LD3_Pin */
   GPIO_InitStruct.Pin = LD3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LD3_GPIO_Port, &GPIO_InitStruct);
 
 }
