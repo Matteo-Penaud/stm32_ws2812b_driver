@@ -1,0 +1,6 @@
+../Core/Src/ws2812b.c:15:6:ws2812b_createStrip	32	static
+../Core/Src/ws2812b.c:56:6:ws2812b_createLeds	32	static
+../Core/Src/ws2812b.c:94:6:ws2812b_resetLeds	24	static
+../Core/Src/ws2812b.c:110:21:ws2812b_findStripById	24	static
+../Core/Src/ws2812b.c:136:6:ws2812b_generatePWMArray	72	static
+../Core/Src/ws2812b.c:172:6:ws2812b_sendStrip	56	dynamic
